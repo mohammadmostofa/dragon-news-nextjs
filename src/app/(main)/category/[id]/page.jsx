@@ -1,25 +1,7 @@
 import AllNews from "@/components/HomePage/News/all-news";
 import LeftSidebar from "@/components/HomePage/News/left-sidebar";
 import RightSidebar from "@/components/HomePage/News/right-sidebar";
-
-
-  
-// category list fatching
-  async function getCategory (){
-        const res = await fetch("https://openapi.programming-hero.com/api/news/categories");
-        const data = await res.json();
-        return data.data;
-  }
-
-
-  // category fatching getNewsByCategory
-
-   async function getNewsByCategoryId(category_id) {
-        const res  = await fetch(`https://openapi.programming-hero.com/api/news/category/${category_id}`)
-         const data = await res.json();
-         return data.data
-      }
-
+import { getCategory, getNewsByCategoryId } from "@/lib/data";
 
 const NewsCategoryPage = async ({params}) => {
    const {id} = await params;
@@ -44,21 +26,18 @@ const NewsCategoryPage = async ({params}) => {
 
              <div className="col-span-3">    
 
-                 <h1 className="text-black font-bold tex-2xl border-b pb-4 ">All categories</h1>
+                 <h1 className="text-black font-bold tex-2xl">All categories</h1>
 
               {
               categories.news_category.map(category => <LeftSidebar key={category.category_id} category = {category} activeId ={id} ></LeftSidebar> )
              } 
              </div>  
 
-        <div className="border col-span-6">
-        <h1 className="text-black font-bold tex-2xl border-b pb-4 ">Dragon News Home</h1>
+        <div className="col-span-6">
+        <h1 className="text-black font-bold tex-2xl ">Dragon News Home</h1>
 
-            
             {
-           news?.length !== 0 ? (
-             news.map(item => (
-               <AllNews key={item._id} item={item} /> )) ) 
+           news?.length !== 0 ? (news.map(news => ( <AllNews key={news._id} news={news} /> ) ) ) 
                : (  <p>No data available</p> )
          }
            
@@ -70,7 +49,7 @@ const NewsCategoryPage = async ({params}) => {
 
         <div className="col-span-3">
 
-        <h1 className="text-black font-bold tex-2xl border-b pb-4 ">Login With</h1>
+        <h1 className="text-black font-bold tex-2xl  ">Login With</h1>
 
           <RightSidebar></RightSidebar>
           

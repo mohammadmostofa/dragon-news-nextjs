@@ -3,9 +3,9 @@ import { FaGithub, FaGoogle } from 'react-icons/fa';
 
 const RightSidebar = () => {
   return (
-    <div className='flex flex-col justify-center items-start space-y-4 py-2'>   
+    <div className='flex flex-col justify-center items-start space-y-4 '>   
 
-       <button className='mt-4 w-full btn flex justify-center items-center text-center px-5  border-blue-500 text-blue-500 '>   
+       <button className='mt-5 w-full btn flex justify-center items-center text-center px-5  border-blue-500 text-blue-500 '>   
                    <FaGoogle />
                   <span>Login with Google</span>
          </button>
