@@ -1,6 +1,6 @@
-// category list fatching
- 
 
+
+// category list fatching
  export async function getCategory (){
         const res = await fetch("https://openapi.programming-hero.com/api/news/categories");
         const data = await res.json();

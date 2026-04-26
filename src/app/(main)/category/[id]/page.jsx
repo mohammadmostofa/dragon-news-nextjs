@@ -1,7 +1,10 @@
 import AllNews from "@/components/HomePage/News/all-news";
 import LeftSidebar from "@/components/HomePage/News/left-sidebar";
 import RightSidebar from "@/components/HomePage/News/right-sidebar";
+import BreackingNews from "@/components/shared/BreackingNews";
 import { getCategory, getNewsByCategoryId } from "@/lib/data";
+
+ 
 
 const NewsCategoryPage = async ({params}) => {
    const {id} = await params;
@@ -29,7 +32,7 @@ const NewsCategoryPage = async ({params}) => {
                  <h1 className="text-black font-bold tex-2xl">All categories</h1>
 
               {
-              categories.news_category.map(category => <LeftSidebar key={category.category_id} category = {category} activeId ={id} ></LeftSidebar> )
+              categories.news_category.map(category => <LeftSidebar key={category.category_id} category = {category} activeId ={id}   ></LeftSidebar> )
              } 
              </div>  
 
@@ -55,7 +58,7 @@ const NewsCategoryPage = async ({params}) => {
           
         </div>
 
-    </div>
+    </div>  
 
     </div>
 

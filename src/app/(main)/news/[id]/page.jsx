@@ -6,6 +6,16 @@ import { CiShare2 } from 'react-icons/ci';
 import { FaEye, FaStar } from 'react-icons/fa';
 import { getNewsDetailsById } from '@/lib/data';
 
+// metadata
+ export const generateMetadata  = async ({params})=>{
+      const {id} = await params;
+      const news = await getNewsDetailsById(id);
+      return {
+        title:news.title,
+        description:news.details,
+      }
+}
+
 const NewsDetailspage = async ({params}) => {
   const {id} =  await params;
   console.log(id, "id")
@@ -25,7 +35,7 @@ const NewsDetailspage = async ({params}) => {
 
 
                <div className='flex justify-center items-center space-x-4'>
-                         <Image src={news.author?.img}  alt={news.author?.name} width={40} height={40} loading='eager' className='rounded-full' /> 
+                         <Image src={news?.author.img}  alt={news?.author.name} width={40} height={40} loading='eager' className='rounded-full' /> 
 
                          <div>
                                     <h4 className='font-bold text-black '> {news.author?.name} </h4>
@@ -65,6 +75,7 @@ const NewsDetailspage = async ({params}) => {
 
             <Link href={`/category/${news.category_id}`}> <button className='btn'> All news in this category </button> </Link>
    </div>
+
 
  </div>
       

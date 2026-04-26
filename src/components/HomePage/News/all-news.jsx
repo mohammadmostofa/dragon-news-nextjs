@@ -5,6 +5,7 @@ import { BsBookmark } from 'react-icons/bs';
 import { CiShare2 } from 'react-icons/ci';
 import { FaEye, FaStar } from 'react-icons/fa';
 
+
 const AllNews = ({news}) => {
   return (
 
@@ -20,7 +21,7 @@ const AllNews = ({news}) => {
 
 
                <div className='flex justify-center items-center space-x-4'>
-                         <Image src={news.author?.img}  alt={news.author?.name} width={40} height={40} loading='eager' className='rounded-full' /> 
+                         <Image src={news?.author.img}  alt={news?.author.name|| 'auther_img' } width={40} height={40} loading='eager' className='rounded-full' /> 
 
                          <div>
                                     <h4 className='font-bold text-black '> {news.author?.name} </h4>
@@ -60,6 +61,7 @@ const AllNews = ({news}) => {
 
             <Link href={`/news/${news._id}`} > <button className='btn'>Read More</button> </Link>
    </div>
+   
 
  </div>
         
