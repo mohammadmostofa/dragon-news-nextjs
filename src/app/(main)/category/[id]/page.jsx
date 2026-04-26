@@ -1,6 +1,8 @@
 import AllNews from "@/components/HomePage/News/all-news";
 import LeftSidebar from "@/components/HomePage/News/left-sidebar";
 import RightSidebar from "@/components/HomePage/News/right-sidebar";
+
+
   
 // category list fatching
   async function getCategory (){
@@ -13,26 +15,28 @@ import RightSidebar from "@/components/HomePage/News/right-sidebar";
   // category fatching getNewsByCategory
 
    async function getNewsByCategoryId(category_id) {
-        const res  = await fetch(`  https://openapi.programming-hero.com/api/news/category/${category_id}`)
+        const res  = await fetch(`https://openapi.programming-hero.com/api/news/category/${category_id}`)
          const data = await res.json();
          return data.data
       }
 
-// HomePage Start-------------------
-export default async function Home() {
 
+const NewsCategoryPage = async ({params}) => {
+   const {id} = await params;
+  console.log({id},"paramRes");
+
+  
 // category list await to access  its data
   const categories = await getCategory();
   console.log(categories.news_category, "categories");
 
   // getNewsByCategory await to access its data
-  const  news = await getNewsByCategoryId("01");
+  const  news = await getNewsByCategoryId(id);
   console.log(news, 'news')
 
-  // return start-------
-  return (
-    
-    <div className="container mx-auto py-10 ">
+    return (
+      
+      <div className="container mx-auto py-10 ">
 
 
 
@@ -49,12 +53,15 @@ export default async function Home() {
 
         <div className="border col-span-6">
         <h1 className="text-black font-bold tex-2xl border-b pb-4 ">Dragon News Home</h1>
-         {
+
+            
+            {
            news?.length !== 0 ? (
              news.map(item => (
                <AllNews key={item._id} item={item} /> )) ) 
                : (  <p>No data available</p> )
          }
+           
 
         </div>
 
@@ -73,6 +80,7 @@ export default async function Home() {
 
     </div>
 
-  );
-}
+    )  
 
+  }
+    export default NewsCategoryPage ;
