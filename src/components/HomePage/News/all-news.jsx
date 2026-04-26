@@ -58,7 +58,7 @@ const AllNews = ({news}) => {
 
               </div>
 
-            <Link href={`/news/${news._id}`}> <button className='btn'>Read More</button> </Link>
+            <Link href={`/news/${news._id}`} > <button className='btn'>Read More</button> </Link>
    </div>
 
  </div>

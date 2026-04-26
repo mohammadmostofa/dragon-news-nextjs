@@ -63,7 +63,7 @@ const NewsDetailspage = async ({params}) => {
 
               </div>
 
-            <Link href={'/'}> <button className='btn'>Back To Home</button> </Link>
+            <Link href={`/category/${news.category_id}`}> <button className='btn'> All news in this category </button> </Link>
    </div>
 
  </div>
