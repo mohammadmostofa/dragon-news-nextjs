@@ -47,7 +47,7 @@ const NewsCategoryPage = async ({params}) => {
                  <h1 className="text-black font-bold tex-2xl border-b pb-4 ">All categories</h1>
 
               {
-              categories.news_category.map(category => <LeftSidebar key={category.category_id} category = {category} activeId ={"01"} ></LeftSidebar> )
+              categories.news_category.map(category => <LeftSidebar key={category.category_id} category = {category} activeId ={id} ></LeftSidebar> )
              } 
              </div>  
 
