@@ -1,10 +1,18 @@
+"use client"
 import Link from 'next/link';
 import React from 'react';
 import userAvator from '@/assets/user.png'
 import Image from 'next/image';
 import NavLink from './Navlink/NavLink';
+import { authClient } from '@/lib/auth-client';
 
 const Navbar = () => {
+
+  // use session to catch current session user details of login
+  const { data: session, isPending } = authClient.useSession()
+  const user = session?.user;
+  console.log(user ,'seeeion')
+
   return (
 
     <div className='mx-auto container'>
@@ -21,12 +29,24 @@ const Navbar = () => {
              <li> <NavLink href={'/career'}  >Career</NavLink> </li>
 
          </ul>
-
+              
          <div className='flex justify-center items-center w-30 gap-4 '>
-              <Image src={userAvator} width={60} height={60} alt='userAvator' className='mx-auto' ></Image>
-              <button className='btn btn-primary px-6 bg-black text-white'> <Link href={'/login'} >Login</Link> </button>
+             
+                                   {/* <h3>{user?.name} </h3> */}
+              {/* <Image src={user?.image} width={50} height={50} alt='userAvator' className='mx-auto' ></Image> */}
+      
+              { isPending ?  <p>Loading...</p>  : user ? <> <Image src={userAvator} width={50} height={50} alt='userAvator' className='mx-auto' ></Image>
+              <button className='btn btn-error text-black font-bold'>LogOut</button>
+            </>   : 
+            
+            <button className='btn btn-primary px-6 bg-black text-white'> <Link href={'/login'} >Login</Link> </button>
+
+              }
+
+       
          </div>
 
+  
     </div>
 
     </div>
