@@ -1,13 +1,15 @@
 "use client"
 import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const LoginPage = () => {
 
   const {register,handleSubmit, watch ,formState:{errors}} = useForm();
 
+  const [isShow,setIsShow] = useState(false) ;
 
   const handleLoginFun = async (data) => {
     const { data:res, error } = await authClient.signIn.email({
@@ -46,13 +48,24 @@ console.log(res,error)
          placeholder="Enter your email adress" />
          {errors.email && <span className='text-red-500'>email Field is required</span>}
         
-        {/*  password  and its label */}
-        <label className="label mt-3 text-black text-[16px] font-bold">Password</label>
-        <input type="password"
+        <fieldset className='relative flex flex-col'>
+
+              {/*  password  and its label */}
+        <label className="label mt-3 text-black text-[16px] font-bold ">Password </label>
+        <input type= {isShow ? "text" : "password"}
          {...register("password", {required:true})}
          className="inline p-2 capitalize bg-gray-300 mt-1 rounded-md"
           placeholder="Enter your Password" />
+
+          <span className='absolute right-2 bottom-3 cursor-pointer ' onClick={() => setIsShow(!isShow) } >
+               { isShow ? <FaEye></FaEye> :<FaEyeSlash></FaEyeSlash> }
+          </span>
+
+        </fieldset>
+
           {errors.password && <span className='text-red-500'>password Field is required</span>}
+
+
       
         <button type='submit' className="btn  btn-neutral mt-5">Login</button>
            

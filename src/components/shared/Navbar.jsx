@@ -36,7 +36,7 @@ const Navbar = () => {
               {/* <Image src={user?.image} width={50} height={50} alt='userAvator' className='mx-auto' ></Image> */}
       
               { isPending ?  <p>Loading...</p>  : user ? <> <Image src={userAvator} width={50} height={50} alt='userAvator' className='mx-auto' ></Image>
-              <button className='btn btn-error text-black font-bold'>LogOut</button>
+              <button onClick={ async () => await authClient.signOut() } className='btn btn-error text-black font-bold'>LogOut</button>
             </>   : 
             
             <button className='btn btn-primary px-6 bg-black text-white'> <Link href={'/login'} >Login</Link> </button>

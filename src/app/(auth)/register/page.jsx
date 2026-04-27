@@ -1,13 +1,15 @@
 "use client"
-import React from 'react';
+import React, { useState } from 'react';
 import { authClient } from '@/lib/auth-client';
 import { useForm } from 'react-hook-form';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const RegisterPage = () => {
 
   
-    const {register,handleSubmit, watch ,formState:{errors}} = useForm();
-  
+    const {register,handleSubmit, watch ,formState:{errors}} = useForm();  
+
+      const [isShow,setIsShow] = useState(false) ;
   
     const handleRegisterFun = async (data) => {
       
@@ -74,12 +76,21 @@ const RegisterPage = () => {
         
 
         {/*  password  and its label */}
-        <label className="label mt-3 text-black text-[16px] font-bold">Password</label>
-        <input type="password"
+        <fieldset className='flex flex-col relative ' >
+
+         <label className="label mt-3 text-black text-[16px] font-bold">Password</label>
+         <input type= {isShow ? "text" : "password"}
          {...register("password", {required:true})}
          className="inline w-100 p-3 capitalize bg-gray-300 mt-1 rounded-md"
           placeholder="Enter your Password" />
+         
+          <span className='absolute right-3 bottom-4 cursor-pointer' onClick={() => setIsShow(!isShow) } >
+                         { isShow ? <FaEye></FaEye> :<FaEyeSlash></FaEyeSlash> }
+                    </span>
+
+        </fieldset>
           {errors.password && <span className='text-red-500'>password Field is required</span>}
+
       
         <button type='submit' className="btn  btn-neutral mt-5">Register Now</button>
            
