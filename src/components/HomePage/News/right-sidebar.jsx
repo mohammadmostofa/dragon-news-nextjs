@@ -4,11 +4,18 @@ import React from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 
 const RightSidebar = () => {
+
   const handleGoogleSignIn = async () => {
   const data = await authClient.signIn.social({
     provider: "google",
   });
-  }
+}
+
+  const handleGithubSignIn = async () => {
+  const data = await authClient.signIn.social({
+    provider: "github",
+  });
+}
 
   return (
     <div className='flex flex-col justify-center items-start space-y-4 '>   
@@ -18,7 +25,7 @@ const RightSidebar = () => {
                   <span>Login with Google</span>
          </button>
 
-              <button className=' w-full btn flex justify-center text-center items-center px-5 border-blue-500 text-blue-500 '>    
+              <button onClick={handleGithubSignIn} className=' w-full btn flex justify-center text-center items-center px-5 border-blue-500 text-blue-500 '>    
                    <FaGithub />
                   <span>Login with Github</span>
          </button>
