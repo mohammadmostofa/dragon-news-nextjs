@@ -28,7 +28,7 @@ const RegisterPage = () => {
 
         <fieldset className=" w-full rounded-box flex flex-col justify-center p-4"> 
        {/* name */}
-          <label className="label mt-3 text-black text-[16px] font-bold">Name</label>
+         <label className="label mt-3 text-black text-[16px] font-bold">Name</label>
         <input  type="text"
          {...register("name" , {required:true})}
          className="inline w-100 p-3 capitalize bg-gray-300 mt-1 rounded-md"
