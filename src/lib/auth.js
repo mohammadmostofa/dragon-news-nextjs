@@ -1,6 +1,3 @@
-  // external setup with google server
-  // import dns from 'node:dns';
-  // dns.server(['8.8.8.8' , '8.8.4.4'])
 
 import { betterAuth } from "better-auth";
 import { MongoClient } from "mongodb";
