@@ -24,7 +24,7 @@ const Navbar = () => {
 
          <div className='flex justify-center items-center w-30 gap-4 '>
               <Image src={userAvator} width={60} height={60} alt='userAvator' className='mx-auto' ></Image>
-              <button className='btn btn-primary bg-black text-white'> <Link href={'/login'} >Login</Link> </button>
+              <button className='btn btn-primary px-6 bg-black text-white'> <Link href={'/login'} >Login</Link> </button>
          </div>
 
     </div>
