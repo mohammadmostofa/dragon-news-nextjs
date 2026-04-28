@@ -23,9 +23,9 @@ const LoginPage = () => {
 console.log(res,error)
 
       if (error) {
-         alert("login Failed!", error);
+         alert("Login Failed!", error);
        } else {
-         alert("login Successfully!", res);
+         alert("Login Successfully!", res);
        }
     
   } ;
