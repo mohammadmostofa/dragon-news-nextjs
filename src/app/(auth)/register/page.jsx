@@ -27,9 +27,9 @@ const RegisterPage = () => {
       })
 
       if (error) {
-         alert("registration Failed!", error);
+         alert("Registration Failed!", error);
        } else {
-         alert("registration Successfully!", res);
+         alert("Registration Successfully!", res);
        }
       
     };
